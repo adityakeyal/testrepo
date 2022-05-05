@@ -50,6 +50,7 @@ public void getUser(Connection con, String user) throws SQLException {
   Statement stmt2 = null;
   PreparedStatement pstmt;
   try {
+	  
     stmt1 = con.createStatement();
     ResultSet rs1 = stmt1.executeQuery("GETDATE()"); // No issue; hardcoded query
 
