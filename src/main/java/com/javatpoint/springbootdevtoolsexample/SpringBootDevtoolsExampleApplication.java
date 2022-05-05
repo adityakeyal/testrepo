@@ -56,5 +56,26 @@ public void getUser(Connection con, String user) throws SQLException {
 
 
 
-}
 
+
+
+
+ private int getMaxWrongAttempts (Connection conn,String user) throws SQLException {
+	 String QUERY_NUM_WRONG_ATTEMPT_VALIDATION= "select * from tablename where user = "+user;
+    	ResultSet rs = null;
+    	Statement st = null;
+    	try{
+    		st = conn.createStatement();
+    		rs = st.executeQuery(QUERY_NUM_WRONG_ATTEMPT_VALIDATION);
+    		if (rs.next())
+    			return rs.getInt(1);
+    		else // enterprise level config data missing, must throw error
+    			throw new SQLException("Cannot populate number of wrong attempts from DB");
+    	} finally {
+    		//
+    	}
+    }
+	
+	
+	
+	}
